@@ -4,8 +4,8 @@ import db from './config/db'
 
 async function connectDB() {
     try {
-        await db.authenticate//conexion
-        db.sync()//sincronizar el modelo
+        await db.authenticate
+        db.sync()
         console.log("Conexion Exitosa");
     } catch (error) {
         console.log(error);
@@ -15,6 +15,9 @@ async function connectDB() {
 connectDB()
 
 const server = express()
+
+server.use(express.json())
+
 server.use('/Api', router)
 
 export default server
